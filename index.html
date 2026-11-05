@@ -1,0 +1,390 @@
+<!doctype html>
+<!-- 테마 설정: data-theme="light" | "dark" -->
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김동욱 · Frontend Engineer</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#f6f6f3; --paper:#ffffff; --ink:#16181d; --ink-2:#4a4f59; --ink-3:#8a8f99;
+  --line:#e7e7e2; --accent:#3b5bfd; --accent-soft:#eef1ff; --chip:#f2f2ee;
+}
+/* 다크 테마: <html data-theme="dark"> 로 바꾸면 적용됩니다 */
+:root[data-theme="dark"]{--bg:#0f1013;--paper:#16181d;--ink:#eceef2;--ink-2:#b4b9c3;--ink-3:#7c818c;--line:#262931;--accent:#8ea2ff;--accent-soft:#1d2240;--chip:#20232a;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+  font-size:15px;line-height:1.7;letter-spacing:-0.01em;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+a:hover{color:var(--accent);border-color:var(--accent)}
+.page{max-width:880px;margin:48px auto;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:64px 64px 56px}
+
+/* Header */
+header{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding-bottom:36px;border-bottom:1px solid var(--line)}
+.role{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h1{font-size:44px;font-weight:800;letter-spacing:-0.04em;line-height:1.1}
+h1 small{font-size:18px;font-weight:500;color:var(--ink-3);margin-left:10px;letter-spacing:0}
+.contact{list-style:none;text-align:right;font-size:14px;color:var(--ink-2)}
+.contact li{line-height:1.9}
+.contact span{color:var(--ink-3);margin-right:8px;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.tagline{margin-top:28px;font-size:20px;font-weight:600;line-height:1.55;letter-spacing:-0.025em}
+.tagline em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+.summary{margin-top:14px;color:var(--ink-2);font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.stat{background:var(--chip);border-radius:14px;padding:16px 18px}
+.stat b{display:block;font-size:24px;font-weight:800;letter-spacing:-0.03em}
+.stat i{font-style:normal;font-size:12.5px;color:var(--ink-3)}
+
+/* Sections */
+section{margin-top:52px}
+.sec-title{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:24px}
+.sec-title::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--chip);border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:500}
+.chip.main{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.skill-grid{display:grid;grid-template-columns:120px 1fr;gap:14px 20px;align-items:center}
+.skill-grid dt{font-size:13px;font-weight:600;color:var(--ink-3)}
+
+/* Company */
+.company{display:grid;grid-template-columns:180px 1fr;gap:28px;padding:32px 0;border-top:1px solid var(--line)}
+.company:first-of-type{border-top:0;padding-top:0}
+.co-meta h3{font-size:20px;font-weight:800;letter-spacing:-0.03em}
+.co-meta .period{font-size:13px;color:var(--ink-3);margin-top:4px;font-variant-numeric:tabular-nums}
+.co-meta .pos{display:inline-block;margin-top:10px;font-size:12.5px;font-weight:600;color:var(--ink-2);background:var(--chip);padding:3px 10px;border-radius:6px}
+.co-meta .now{color:var(--accent);font-weight:700}
+
+.project{margin-bottom:28px}
+.project:last-child{margin-bottom:0}
+.p-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.project h4{font-size:16.5px;font-weight:700;letter-spacing:-0.02em}
+.p-period{font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.p-desc{font-size:14px;color:var(--ink-2);margin-top:4px}
+.tech{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}
+.tech span{font-size:11.5px;font-weight:600;color:var(--ink-2);border:1px solid var(--line);border-radius:6px;padding:1px 8px}
+.project ul{list-style:none}
+.project li{position:relative;padding-left:16px;color:var(--ink-2);font-size:14.5px;margin-bottom:5px}
+.project li::before{content:"";position:absolute;left:2px;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.7}
+.project li b{color:var(--ink);font-weight:600}
+
+/* Side projects */
+.side-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px}
+.card .type{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.card h4{font-size:17px;font-weight:700;margin:4px 0 2px;letter-spacing:-0.02em}
+.card.wide{grid-column:1/-1}
+
+/* Patents */
+.patents{list-style:none}
+.patents li{display:grid;grid-template-columns:1fr auto;gap:16px;padding:14px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.patents li:last-child{border-bottom:0}
+.patents .no{font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;text-align:right}
+
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);display:flex;justify-content:space-between}
+
+@media (max-width:720px){
+  .page{margin:0;border-radius:0;border:0;padding:40px 16px}
+  header{grid-template-columns:1fr}
+  .contact{text-align:left}
+  h1{font-size:36px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .company{grid-template-columns:1fr;gap:16px}
+  .side-grid{grid-template-columns:1fr}
+  .skill-grid{grid-template-columns:1fr;gap:6px}
+  .skill-grid dd{margin-bottom:10px}
+  .patents li{grid-template-columns:1fr}
+  .patents .no{text-align:left}
+}
+@media print{
+  :root{--bg:#fff;--paper:#fff;--ink:#16181d;--ink-2:#3f444d;--ink-3:#7b808a;--line:#e3e3de;--accent:#3b5bfd;--accent-soft:#eef1ff;--chip:#f3f3ef}
+  @page{size:A4;margin:14mm 12mm}
+  body{font-size:12.5px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{margin:0;border:0;padding:0;max-width:none}
+  section{margin-top:32px}
+  .project,.card,.patents li{break-inside:avoid}
+  .company{break-inside:auto}
+  .co-meta{break-after:avoid}
+  a{border:0}
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+<header>
+  <div>
+    <p class="role">Frontend Engineer · Tech Lead</p>
+    <h1>김동욱<small>Dongwook Kim</small></h1>
+  </div>
+  <ul class="contact">
+    <li><span>Email</span><a href="mailto:kdw115@naver.com">kdw115@naver.com</a></li>
+    <li><span>Phone</span><a href="tel:010-6863-8715">010-6863-8715</a></li>
+    <li><span>GitHub</span><a href="https://github.com/drawhale" target="_blank">github.com/drawhale</a></li>
+  </ul>
+</header>
+
+<p class="tagline">개발을 위한 개발이 아닌, <em>사용자를 위한 즐겁고 새로운 경험</em>을 전달하고자 노력하는 개발자입니다.</p>
+<p class="summary">
+  웹 에이전시부터 의료 IT, 프롭테크, 헬스케어, 동물의료 SaaS까지 15년간 웹 프론트엔드를 개발해 왔습니다.
+  디자인 시스템과 공통 모듈처럼 팀 전체의 생산성을 끌어올리는 기반을 설계하는 일, 그리고 실시간 통신·캔버스·대용량 렌더링처럼
+  까다로운 기술 문제를 사용자 경험의 관점에서 풀어내는 일에 강점이 있습니다. 현재는 개발팀 리드로서 기술 방향과 아키텍처를 이끌고 있습니다.
+</p>
+<div class="stats">
+  <div class="stat"><b>15년+</b><i>개발 경력</i></div>
+  <div class="stat"><b>5년</b><i>리드 경력</i></div>
+  <div class="stat"><b>3건</b><i>특허 출원·등록</i></div>
+  <div class="stat"><b>5개</b><i>개인 서비스 출시</i></div>
+</div>
+
+<section>
+  <h2 class="sec-title">Skills</h2>
+  <dl class="skill-grid">
+    <dt>Web</dt>
+    <dd class="chips"><span class="chip main">TypeScript</span><span class="chip main">React</span><span class="chip main">Next.js</span><span class="chip main">JavaScript</span><span class="chip main">Node.js</span><span class="chip main">TanStack Start</span></dd>
+    <dt>App</dt>
+    <dd class="chips"><span class="chip">Flutter</span><span class="chip">C#</span><span class="chip">React Native</span><span class="chip">Electron</span></dd>
+  </dl>
+</section>
+
+<section>
+  <h2 class="sec-title">Experience</h2>
+
+  <!-- 벳칭 -->
+  <div class="company">
+    <div class="co-meta">
+      <h3>벳칭</h3>
+      <p class="period">2023.07 – <span class="now">현재</span></p>
+      <span class="pos">개발팀 리드 · FE</span>
+    </div>
+    <div>
+      <article class="project">
+        <div class="p-head"><h4>실시간 WebSocket 클라이언트 모듈 개발</h4><span class="p-period">2025.02 – 2025.03</span></div>
+        <div class="tech"><span>TypeScript</span><span>React</span><span>Node.js</span><span>WebSocket</span></div>
+        <ul>
+          <li>외부 라이브러리의 비동기 제어 한계를 해결하기 위해 <b>Native WebSocket API 기반 클라이언트 모듈을 자체 개발</b>하고 이벤트 큐 시스템 구현</li>
+          <li>Health Check와 subscribe/unsubscribe 전용 대기열 아키텍처를 설계하여 <b>연결 단절 시 자동 복구 로직 강화</b></li>
+          <li>구독(subscription)별 상태를 개별 관리하여 재연결 이후에도 <b>모든 구독의 연결을 보장</b>하는 구조로 개선, 실시간 데이터 동기화 안정성 확보</li>
+        </ul>
+      </article>
+      <article class="project">
+        <div class="p-head"><h4>전자 동의서 서비스 개발</h4><span class="p-period">2024.01 – 2024.03</span></div>
+        <div class="tech"><span>TypeScript</span><span>React</span><span>Next.js</span><span>Fabric.js</span><span>Headless Browser</span></div>
+        <ul>
+          <li>종이 서식의 디지털 전환을 위해 Fabric.js 기반 웹 캔버스와 <b>스타일러스 펜 서명 기능</b>을 개발하고, 확대·축소·이동이 자유로운 인터랙티브 UI 구현</li>
+          <li>React State 의존성을 최소화하고 이벤트 기반 데이터 흐름으로 전환하여 <b>복잡한 서식 위에서도 끊김 없는 드로잉 성능</b> 확보</li>
+          <li>Headless Browser 기반 <b>서버 사이드 이미지 변환 파이프라인</b>을 구축하여 클라이언트 환경별 렌더링 오차를 제거하고 문서 보존 정확성 확보</li>
+          <li>핵심 인증·암호화 로직을 SSR 단계에서 수행하도록 설계하여 <b>브라우저 내 민감 데이터 노출 차단</b></li>
+        </ul>
+      </article>
+      <article class="project">
+        <div class="p-head"><h4>디자인 시스템 구축</h4><span class="p-period">2023.10 – 2023.12</span></div>
+        <div class="tech"><span>TypeScript</span><span>React</span><span>Storybook</span><span>NPM</span><span>GitHub Actions</span></div>
+        <ul>
+          <li>복잡한 디자인 요구를 유연하게 수용하면서도 일관성을 유지하는 <b>확장 가능한 컴포넌트 인터페이스</b> 설계</li>
+          <li>Storybook 환경을 구축해 컴포넌트 단위 기능 검증과 <b>시각적 회귀 테스트</b>를 도입, UI 렌더링 신뢰성 확보</li>
+          <li>프로젝트 종속성을 제거하고 <b>독립 NPM 라이브러리로 분리</b>하여 전사 공용 자산으로 활용 가능한 구조 마련</li>
+          <li>GitHub Actions로 버전 릴리즈·배포를 자동화하여 변경 사항이 즉시 반영되는 <b>CI/CD 파이프라인</b> 구축</li>
+        </ul>
+      </article>
+      <article class="project">
+        <div class="p-head"><h4>PlusVet 레거시 개선</h4><span class="p-period">2023.07 – 2023.09</span></div>
+        <div class="tech"><span>TypeScript</span><span>React</span><span>GraphQL Codegen</span><span>Tailwind CSS</span></div>
+        <ul>
+          <li>레거시 코드베이스를 분석해 구조적 문제점을 도출하고 단계별 개선 로드맵 수립</li>
+          <li><b>[타입 안정성]</b> codegen과 typed-document-node를 도입해 수동 타입 정의로 인한 휴먼 에러와 패키지 간 동기화 비용 제거</li>
+          <li><b>[스타일 아키텍처]</b> 전역 스타일의 사이드 이펙트를 해소하기 위해 Tailwind CSS를 도입, 예측 가능한 스타일링 환경과 디자인 일관성 확보</li>
+          <li><b>[의존성 최적화]</b> 무거운 서드파티 UI 라이브러리를 걷어내고 핵심 로직을 직접 구현한 경량 UI 라이브러리를 구축해 번들 사이즈 축소</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+
+  <!-- 루닛케어 -->
+  <div class="company">
+    <div class="co-meta">
+      <h3>루닛케어</h3>
+      <p class="period">2023.01 – 2023.06</p>
+      <span class="pos">FE 개발자</span>
+    </div>
+    <div>
+      <article class="project">
+        <div class="p-head"><h4>디자인 시스템 컴포넌트 구현 리드</h4><span class="p-period">2023.02 – 2023.04</span></div>
+        <div class="tech"><span>TypeScript</span><span>React</span><span>Next.js</span><span>Figma</span></div>
+        <ul>
+          <li>Figma로 정의된 디자인 시스템을 React 컴포넌트로 구현하는 작업 리드</li>
+          <li>디자인 시스템이 <b>UXI팀과 FE팀의 공통 언어</b>가 되어야 한다는 관점에서 컴포넌트 정의 방식을 제안하고 협업 구조 정립</li>
+          <li>공통 기반 컴포넌트를 선행 구현하여 팀원들의 후속 개발 속도 향상</li>
+          <li>여러 계층에 혼재된 기존 컴포넌트를 정리하는 <b>마이그레이션 방향</b>을 제시해 구조 일관성 확보</li>
+        </ul>
+      </article>
+      <article class="project">
+        <div class="p-head"><h4>배포 인프라 전환 및 SSR 도입</h4><span class="p-period">2023.04 – 2023.06</span></div>
+        <div class="tech"><span>TypeScript</span><span>Next.js</span><span>Vercel</span><span>AWS S3</span></div>
+        <ul>
+          <li>정적 배포 구조의 한계(동적 라우팅 불가로 인한 SEO 제약, 동적 OG 태그 미지원, 이미지 CDN 부재)를 분석하고 개선안 수립</li>
+          <li>AWS S3 정적 배포를 <b>Vercel 기반 SSR 환경으로 전환</b></li>
+          <li>동적 라우팅으로 메타·OG 태그를 페이지별로 생성하여 <b>검색 노출과 SNS 공유 프리뷰 개선</b></li>
+          <li>next/image 도입으로 이미지 최적화 및 CDN 제공을 적용해 <b>렌더링·네트워크 성능 개선</b></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+
+  <!-- 스페이스워크 -->
+  <div class="company">
+    <div class="co-meta">
+      <h3>스페이스워크</h3>
+      <p class="period">2021.11 – 2023.01</p>
+      <span class="pos">FE 팀 리더</span>
+    </div>
+    <div>
+      <article class="project">
+        <div class="p-head"><h4>랜드북 데스크톱 3.0 설계 및 개발</h4><span class="p-period">2022.01 – 2022.03</span></div>
+        <div class="tech"><span>TypeScript</span><span>React</span></div>
+        <ul>
+          <li>모바일 우선으로 개발된 서비스를 데스크톱으로 확장하는 <b>프론트엔드 아키텍처 설계</b> 담당</li>
+          <li>기존 코드 수정 범위 최소화, 코드 곳곳의 디바이스 분기 제거, 반응형 대응 비용 절감을 설계 원칙으로 수립</li>
+          <li>모바일·데스크톱 컴포넌트를 명시적으로 분리하고 <b>Wrapper 컴포넌트 패턴</b>을 도입하여 사용처의 변경을 최소화</li>
+          <li>촉박한 일정 속에서도 <b>요구사항을 모두 충족하며 기한 내 릴리즈</b></li>
+        </ul>
+      </article>
+      <article class="project">
+        <div class="p-head"><h4>LBDeveloper 사용자 행동 분석(GA) 체계 구축</h4><span class="p-period">2022.07 – 2022.08</span></div>
+        <div class="tech"><span>TypeScript</span><span>React</span><span>Next.js</span><span>GA</span><span>GTM</span></div>
+        <ul>
+          <li>B2C 전환에 따른 사용성 분석을 위해 태그 기반 GA 트래킹 도입</li>
+          <li>GTM 직접 태깅 방식과 코드 기반 태깅 방식의 유지보수 트레이드오프를 비교·분석하여 개발 방향 수립</li>
+          <li>코드에서 이벤트 태그를 정의·호출하고 GTM은 동적으로 처리하도록 구성하여 <b>UI 변경 시 동기화 비용과 관리 부담 감소</b></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+
+  <!-- 유비케어 -->
+  <div class="company">
+    <div class="co-meta">
+      <h3>유비케어</h3>
+      <p class="period">2015.03 – 2021.11</p>
+      <span class="pos">FE 개발자</span>
+    </div>
+    <div>
+      <article class="project">
+        <div class="p-head"><h4>CloudEMR 개발</h4><span class="p-period">2017.01 – 2021.11</span></div>
+        <div class="tech"><span>JavaScript</span><span>React</span><span>Node.js</span><span>PostgreSQL</span><span>SSE</span></div>
+        <ul>
+          <li>윈도우 응용프로그램 기반 EMR을 신규 시장 대상 <b>웹 EMR로 전환</b>하는 신규 팀에 선발되어 개발</li>
+          <li>SSE를 활용해 동일 계정 사용자 간 <b>실시간 데이터 동기화</b> 구현</li>
+          <li>대량 데이터 렌더링 시 발생하던 <b>스크롤 성능 저하 문제 개선</b></li>
+          <li>기능 중심으로 나열된 메뉴를 사용자 업무 흐름 관점으로 재구성하는 기획을 직접 주도하여 서비스에 반영</li>
+          <li>사용자 편의 기능 아이디어를 제안하여 <b>특허 3건 출원 및 등록</b></li>
+        </ul>
+      </article>
+      <article class="project">
+        <div class="p-head"><h4>CloudEMR 보험청구 모듈 개발</h4><span class="p-period">2018.01 – 2018.05</span></div>
+        <div class="tech"><span>JavaScript</span><span>React</span><span>Node.js</span></div>
+        <ul>
+          <li>청구 소프트웨어 인증 취득을 목표로 보험청구 기능 개발</li>
+          <li>기존 방식의 문제(심평원 문서와 코드 간 매칭 어려움, 입력 누락과 생성 오류의 구분 불가, 대량 변환 시 처리 지연)를 분석</li>
+          <li>if/else 분기 중심 로직을 <b>함수 조합 기반 구조로 재설계</b>하여 가독성·추적성·처리 속도 개선</li>
+          <li>개선된 구조로 생산성을 높여 <b>예정보다 빠르게 청구 소프트웨어 인증 취득</b></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+
+  <!-- AKIS -->
+  <div class="company">
+    <div class="co-meta">
+      <h3>AKIS</h3>
+      <p class="period">2012.01 – 2015.03</p>
+      <span class="pos">웹 개발자</span>
+    </div>
+    <div>
+      <article class="project">
+        <div class="p-head"><h4>KAIST 경영대학 경영자과정 모바일</h4><span class="p-period">2014.02 – 2014.04</span></div>
+        <div class="tech"><span>JavaScript</span><span>jQuery Mobile</span><span>CSS3</span></div>
+        <ul>
+          <li>이전 프로젝트의 높은 평가로 <b>후속 프로젝트 추가 수주</b>, WebView 기반 하이브리드 앱의 모바일 웹 개발</li>
+          <li>jQuery Mobile의 반응 속도 한계를 보완하기 위해 주요 컴포넌트를 Vanilla JS와 CSS3 transition으로 직접 구현하여 <b>인터랙션 성능 향상</b></li>
+        </ul>
+      </article>
+      <article class="project">
+        <div class="p-head"><h4>KAIST 경영대학 학생수첩 모바일</h4><span class="p-period">2013.02 – 2013.04</span></div>
+        <div class="tech"><span>JavaScript</span><span>jQuery Mobile</span></div>
+        <ul>
+          <li>WebView 기반 하이브리드 앱의 모바일 웹 개발, 요구사항을 스토리보드로 정리하여 고객과 소통</li>
+          <li>요구사항 수집부터 기획·개발·유지보수까지 <b>전 사이클을 직접 수행</b>하며 타 직군에 대한 이해와 커뮤니케이션 역량 강화</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec-title">Side Projects</h2>
+  <div class="side-grid">
+    <article class="card project wide">
+      <div class="p-head"><div><p class="type">Mobile App</p><h4>Cupiary — 홈카페 기록 서비스</h4></div><span class="p-period">2024.01 – 2025.12</span></div>
+      <div class="tech"><span>JavaScript</span><span>React</span><span>Next.js</span><span>PostgreSQL</span></div>
+      <ul>
+        <li>커피를 내릴 때마다 변수와 맛을 기억하기 어렵다는 개인적 불편에서 출발한 서비스</li>
+        <li>단순 추출 기록을 넘어 ‘메뉴’라는 상위 개념을 도입해 <b>홈카페 사용자의 활용도 확장</b></li>
+        <li>기록 과정의 부담을 줄이는 특색 있는 입력 컴포넌트를 직접 설계·구현</li>
+      </ul>
+    </article>
+    <article class="card project wide">
+      <div class="p-head"><div><p class="type">Mobile Web</p><h4>모바일 청첩장</h4></div><span class="p-period">2022.06 – 08, 2023.02 – 03</span></div>
+      <div class="tech"><span>JavaScript</span><span>React</span><span>CDN</span></div>
+      <ul>
+        <li>초대받는 사람이 진심으로 초대받았다고 느낄 수 있도록 기획한 모바일 청첩장</li>
+        <li>애니메이션과 <b>마이크로 인터랙션</b>으로 즐거운 사용 경험 설계, 대용량 이미지는 CDN으로 렌더링 속도 개선</li>
+        <li><a href="https://dwlabs.me/hgya" target="_blank">dwlabs.me/hgya</a></li>
+      </ul>
+    </article>
+    <article class="card project">
+      <p class="type">Mobile App</p>
+      <h4>오늘은 몇주차</h4>
+      <p class="p-period">2018.11 – 2019.01</p>
+      <div class="tech"><span>Flutter</span></div>
+      <ul>
+        <li>예정일이 확정되기 전에도 쉽게 쓸 수 있는 임신 주차 계산 앱</li>
+        <li>날짜 선택에 최적화된 커스텀 달력 UI 개발</li>
+        <li>렌더링 성능을 우선해 Flutter 채택</li>
+      </ul>
+    </article>
+    <article class="card project">
+      <p class="type">Mobile App · iOS</p>
+      <h4>날씨어때</h4>
+      <p class="p-period">2018.01 – 2018.05</p>
+      <div class="tech"><span>Fusetools</span></div>
+      <ul>
+        <li>절대 수치보다 <b>상대적 온도 변화</b>가 더 직관적이라는 가설로 기획</li>
+        <li>어제·오늘·내일 온도 그래프로 흐름 시각화</li>
+        <li>첫 iOS App Store 퍼블리싱 경험</li>
+      </ul>
+    </article>
+    <article class="card project wide">
+      <div class="p-head"><div><p class="type">Windows App</p><h4>Climo — 클립보드 히스토리 도구</h4></div><span class="p-period">2017.11 – 2017.12</span></div>
+      <div class="tech"><span>WPF</span></div>
+      <ul>
+        <li>복사·붙여넣기 이력을 리스트로 관리하고 단축키로 순차 붙여넣기하는 생산성 도구</li>
+        <li>매일 반복 입력하던 텍스트를 자동화하여 <b>루틴 업무 시간 절감</b></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec-title">Patents</h2>
+  <ul class="patents">
+    <li><span>통합 메뉴 동적 제공 방법 및 통합 메뉴 동적 제공 시스템</span><span class="no">10-2020-0138262 · 2020.10.23</span></li>
+    <li><span>전자차트 작성 방법 및 전자차트 작성 장치</span><span class="no">10-2018-0156021 · 2018.12.06</span></li>
+    <li><span>진료차트를 기록하는 장치 및 진료차트를 기록하는 방법</span><span class="no">10-2017-0133374 · 2017.10.13</span></li>
+  </ul>
+</section>
+
+<footer><span>김동욱 · Frontend Engineer</span><span>github.com/drawhale</span></footer>
+</main>
+</body>
+</html>
