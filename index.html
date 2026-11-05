@@ -31,10 +31,6 @@ h1 small{font-size:18px;font-weight:500;color:var(--ink-3);margin-left:10px;lett
 .tagline{margin-top:28px;font-size:20px;font-weight:600;line-height:1.55;letter-spacing:-0.025em}
 .tagline em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
 .summary{margin-top:14px;color:var(--ink-2);font-size:15px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
-.stat{background:var(--chip);border-radius:14px;padding:16px 18px}
-.stat b{display:block;font-size:24px;font-weight:800;letter-spacing:-0.03em}
-.stat i{font-style:normal;font-size:12.5px;color:var(--ink-3)}
 
 /* Sections */
 section{margin-top:52px}
@@ -75,6 +71,15 @@ section{margin-top:52px}
 .card h4{font-size:17px;font-weight:700;margin:4px 0 2px;letter-spacing:-0.02em}
 .card.wide{grid-column:1/-1}
 
+/* Talks */
+.talks{list-style:none}
+.talks li{display:grid;grid-template-columns:84px 1fr;gap:16px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.talks li:last-child{border-bottom:0}
+.talks .date{font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;padding-top:2px}
+.talks h4{font-size:15px;font-weight:700;letter-spacing:-0.02em}
+.talks p{font-size:13.5px;color:var(--ink-2);margin-top:2px}
+.sec-note{font-size:14px;color:var(--ink-2);margin:-8px 0 12px}
+
 /* Patents */
 .patents{list-style:none}
 .patents li{display:grid;grid-template-columns:1fr auto;gap:16px;padding:14px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
@@ -88,12 +93,12 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-si
   header{grid-template-columns:1fr}
   .contact{text-align:left}
   h1{font-size:36px}
-  .stats{grid-template-columns:repeat(2,1fr)}
   .company{grid-template-columns:1fr;gap:16px}
   .side-grid{grid-template-columns:1fr}
   .skill-grid{grid-template-columns:1fr;gap:6px}
   .skill-grid dd{margin-bottom:10px}
   .patents li{grid-template-columns:1fr}
+  .talks li{grid-template-columns:1fr;gap:2px}
   .patents .no{text-align:left}
 }
 @media print{
@@ -102,7 +107,7 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-si
   body{font-size:12.5px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .page{margin:0;border:0;padding:0;max-width:none}
   section{margin-top:32px}
-  .project,.card,.patents li{break-inside:avoid}
+  .project,.card,.patents li,.talks li{break-inside:avoid}
   .company{break-inside:auto}
   .co-meta{break-after:avoid}
   a{border:0}
@@ -114,28 +119,23 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-si
 
 <header>
   <div>
-    <p class="role">Frontend Engineer · Tech Lead</p>
+    <p class="role">Tech Lead · Frontend Engineer</p>
     <h1>김동욱<small>Dongwook Kim</small></h1>
   </div>
   <ul class="contact">
     <li><span>Email</span><a href="mailto:kdw115@naver.com">kdw115@naver.com</a></li>
     <li><span>Phone</span><a href="tel:010-6863-8715">010-6863-8715</a></li>
     <li><span>GitHub</span><a href="https://github.com/drawhale" target="_blank">github.com/drawhale</a></li>
+    <li><span>Blog</span><a href="https://thirdea.com" target="_blank">thirdea.com</a></li>
   </ul>
 </header>
 
 <p class="tagline">개발을 위한 개발이 아닌, <em>사용자를 위한 즐겁고 새로운 경험</em>을 전달하고자 노력하는 개발자입니다.</p>
 <p class="summary">
-  웹 에이전시부터 의료 IT, 프롭테크, 헬스케어, 동물의료 SaaS까지 15년간 웹 프론트엔드를 개발해 왔습니다.
+  SI부터 의료 IT, 프롭테크, 헬스케어, 동물의료 SaaS까지 15년간 개발해 왔습니다.
   디자인 시스템과 공통 모듈처럼 팀 전체의 생산성을 끌어올리는 기반을 설계하는 일, 그리고 실시간 통신·캔버스·대용량 렌더링처럼
   까다로운 기술 문제를 사용자 경험의 관점에서 풀어내는 일에 강점이 있습니다. 현재는 개발팀 리드로서 기술 방향과 아키텍처를 이끌고 있습니다.
 </p>
-<div class="stats">
-  <div class="stat"><b>15년+</b><i>개발 경력</i></div>
-  <div class="stat"><b>5년</b><i>리드 경력</i></div>
-  <div class="stat"><b>3건</b><i>특허 출원·등록</i></div>
-  <div class="stat"><b>5개</b><i>개인 서비스 출시</i></div>
-</div>
 
 <section>
   <h2 class="sec-title">Skills</h2>
@@ -143,8 +143,21 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-si
     <dt>Web</dt>
     <dd class="chips"><span class="chip main">TypeScript</span><span class="chip main">React</span><span class="chip main">Next.js</span><span class="chip main">JavaScript</span><span class="chip main">Node.js</span><span class="chip main">TanStack Start</span></dd>
     <dt>App</dt>
-    <dd class="chips"><span class="chip">Flutter</span><span class="chip">C#</span><span class="chip">React Native</span><span class="chip">Electron</span></dd>
+    <dd class="chips"><span class="chip">Flutter</span><span class="chip">React Native</span><span class="chip">Electron</span><span class="chip">C#</span></dd>
   </dl>
+</section>
+
+<section>
+  <h2 class="sec-title">Internal Talks</h2>
+  <p class="sec-note">벳칭 전 직군을 대상으로 AI 기술의 원리와 업무 적용을 주제로 한 사내 강의를 정기적으로 진행하고 있습니다.</p>
+  <ul class="talks">
+    <li><span class="date">2026.09</span><div><h4>말 잘하는 AI 다음은 판단하는 AI: 자동화의 마지막 빈칸</h4><p>생성 AI와 판단 AI의 차이, 고객 문의 분류·환불 심사·담당자 배정 사례, 확신이 낮을 때 사람에게 넘기는 기준, 정형 출력과 판단 정확도의 차이</p></div></li>
+    <li><span class="date">2026.05</span><div><h4>AI는 정답을 찾는 도구를 넘어, 발견의 도구가 될 수 있을까?</h4><p>멀티에이전트, 가설 생성과 실험 검증의 차이, 연구자의 역할 변화</p></div></li>
+    <li><span class="date">2025.07</span><div><h4>챗봇 다음은 AI 직원일까? 에이전트 시대의 일하는 법</h4><p>챗봇과 에이전트의 차이, 업무 위임, 계정·결제 권한, 사람의 승인과 책임</p></div></li>
+    <li><span class="date">2025.03</span><div><h4>말로 만드는 시대: 이미지 AI는 디자인 업무를 어떻게 바꾸나</h4><p>광고·교육자료·시안 제작과 반복 수정, 저작권과 초상권, 사람이 맡아야 할 기획과 판단</p></div></li>
+    <li><span class="date">2025.02</span><div><h4>코드를 직접 짜지 않아도 개발할 수 있을까?</h4><p>바이브 코딩과 에이전트 코딩, 비개발자의 제작 가능성, 검증·보안·유지보수의 중요성</p></div></li>
+    <li><span class="date">2024.12</span><div><h4>AI는 왜 답하기 전에 생각하기 시작했을까?</h4><p>생성과 추론의 차이, 추론에 드는 시간과 비용, 추론형 AI도 틀리는 이유</p></div></li>
+  </ul>
 </section>
 
 <section>
@@ -158,6 +171,28 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-si
       <span class="pos">개발팀 리드 · FE</span>
     </div>
     <div>
+      <article class="project">
+        <div class="p-head"><h4>개발 프로세스 표준화 및 AI-Native 투트랙 워크플로우 설계</h4><span class="p-period">2026.10</span></div>
+        <div class="tech"><span>CI/CD</span><span>AI Code Review</span><span>OpenTelemetry</span><span>Slack</span></div>
+        <ul>
+          <li>리뷰 없이 배포하던 관행을 문서 기반 비동기 스크럼, PR 템플릿·2인 승인, 주 단위 정기 배포 로테이션으로 정상화해 <b>배포 안정성과 일정 가시성 확보</b></li>
+          <li>AI 코딩 도입 후 코드량이 늘며 전수 코드 리뷰가 병목이 되자, 설문으로 리뷰의 실제 목적이 버그 검출보다 <b>도메인 맥락 공유와 책임 분산</b>에 있음을 도출하고 리뷰 프로세스를 재설계</li>
+          <li>코딩 전에 PR 단위 Spec(목적·영향도·AC)을 먼저 리뷰하도록 바꿔 <b>맥락 공백과 AI 오버엔지니어링을 선제 차단</b></li>
+          <li>CI와 AI 적대적 리뷰를 통과한 PR을 보안·무결성·아키텍처 등 5대 기준으로 스코어링해, <b>저위험은 즉시 Merge 후 Slack 자동 브리핑, 고위험만 사람이 집중 검증하는 투트랙 Merge 체계</b> 구축</li>
+          <li>OpenTelemetry 기반 이상 감지를 결합해 <b>배포 후 1분 내 대응하는 사후 안전망</b> 마련</li>
+        </ul>
+      </article>
+      <article class="project">
+        <div class="p-head"><h4>코드 기반 도메인 지식 플랫폼 및 AI 에이전트 검증 파이프라인 구축</h4><span class="p-period">2026.07 – 2026.08</span></div>
+        <div class="tech"><span>TypeScript</span><span>Next.js</span><span>Claude Code</span><span>MCP</span><span>Docker</span><span>AWS ECS</span></div>
+        <ul>
+          <li>5개 프로덕트·7개 저장소에 암묵지로 흩어진 동물병원 EMR 도메인 규칙을 코드에서 역추출해 <b>지식 베이스 438건(화면 커버리지 99%)을 1인 전담 구축</b>, 전사 기획·개발의 단일 진실 공급원(SSOT) 확립</li>
+          <li>문서 생성·코드 동기화·감사 절차를 Claude Code 스킬 5종으로 규격화하고, 정적 검사 18종과 문서별 검수 기준 커밋 추적으로 <b>코드 변경에 따른 문서 노후화를 자동 감지</b></li>
+          <li>생성과 검토를 분리한 클러스터 단위 에이전트 감사로 <b>문서-코드 간 모순 48건 검출(정밀도 90.6%)</b>, 감사 대상 사전 병합으로 Tool Call 오버헤드를 줄여 <b>실행당 토큰 54% 절감</b></li>
+          <li>구독형 CLI를 Headless로 래핑해 <b>API 비용 0원의 사내 AI 챗</b>을 운영하고, 원격 MCP 서버와 사내 플러그인을 배포해 IDE 안에서 도메인 지식을 바로 검색하는 환경 제공</li>
+          <li>신규 스펙 검토 시 도메인 규칙을 먼저 파악하고 웹·서버·앱까지 영향 범위를 즉시 도출하는 <b>Spec-Driven 개발 문화 정착</b></li>
+        </ul>
+      </article>
       <article class="project">
         <div class="p-head"><h4>실시간 WebSocket 클라이언트 모듈 개발</h4><span class="p-period">2025.02 – 2025.03</span></div>
         <div class="tech"><span>TypeScript</span><span>React</span><span>Node.js</span><span>WebSocket</span></div>
@@ -192,9 +227,9 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-si
         <div class="tech"><span>TypeScript</span><span>React</span><span>GraphQL Codegen</span><span>Tailwind CSS</span></div>
         <ul>
           <li>레거시 코드베이스를 분석해 구조적 문제점을 도출하고 단계별 개선 로드맵 수립</li>
-          <li><b>[타입 안정성]</b> codegen과 typed-document-node를 도입해 수동 타입 정의로 인한 휴먼 에러와 패키지 간 동기화 비용 제거</li>
-          <li><b>[스타일 아키텍처]</b> 전역 스타일의 사이드 이펙트를 해소하기 위해 Tailwind CSS를 도입, 예측 가능한 스타일링 환경과 디자인 일관성 확보</li>
-          <li><b>[의존성 최적화]</b> 무거운 서드파티 UI 라이브러리를 걷어내고 핵심 로직을 직접 구현한 경량 UI 라이브러리를 구축해 번들 사이즈 축소</li>
+          <li>GraphQL Codegen과 typed-document-node를 도입해 <b>수동 타입 정의로 인한 휴먼 에러와 패키지 간 동기화 비용 제거</b></li>
+          <li>전역 스타일의 사이드 이펙트를 해소하기 위해 Tailwind CSS를 도입하여 <b>예측 가능한 스타일링 환경과 디자인 일관성</b> 확보</li>
+          <li>무거운 서드파티 UI 라이브러리를 걷어내고 핵심 로직을 직접 구현한 <b>경량 UI 라이브러리를 구축해 번들 사이즈 축소</b></li>
         </ul>
       </article>
     </div>
@@ -342,10 +377,8 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-si
         <li><a href="https://dwlabs.me/hgya" target="_blank">dwlabs.me/hgya</a></li>
       </ul>
     </article>
-    <article class="card project">
-      <p class="type">Mobile App</p>
-      <h4>오늘은 몇주차</h4>
-      <p class="p-period">2018.11 – 2019.01</p>
+    <article class="card project wide">
+      <div class="p-head"><div><p class="type">Mobile App</p><h4>오늘은 몇주차</h4></div><span class="p-period">2018.11 – 2019.01</span></div>
       <div class="tech"><span>Flutter</span></div>
       <ul>
         <li>예정일이 확정되기 전에도 쉽게 쓸 수 있는 임신 주차 계산 앱</li>
@@ -353,10 +386,8 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-si
         <li>렌더링 성능을 우선해 Flutter 채택</li>
       </ul>
     </article>
-    <article class="card project">
-      <p class="type">Mobile App · iOS</p>
-      <h4>날씨어때</h4>
-      <p class="p-period">2018.01 – 2018.05</p>
+    <article class="card project wide">
+      <div class="p-head"><div><p class="type">Mobile App · iOS</p><h4>날씨어때</h4></div><span class="p-period">2018.01 – 2018.05</span></div>
       <div class="tech"><span>Fusetools</span></div>
       <ul>
         <li>절대 수치보다 <b>상대적 온도 변화</b>가 더 직관적이라는 가설로 기획</li>
